@@ -34,6 +34,25 @@ const lookup = {
 function rot13(encodedStr) {
   let decodedArr = []; // Your Result goes here
   // Only change code below this line
+	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    const shift = 13;
+
+    return encodedString
+        .split('')
+        .map(char => {
+            if (/[A-Z]/.test(char)) {
+                const charIndex = alphabet.indexOf(char);
+                const shiftedIndex = (charIndex + shift) % 26;
+                return alphabet[shiftedIndex];
+            } else if (/[a-z]/.test(char)) {
+                const charIndex = alphabet.indexOf(char.toUpperCase());
+                const shiftedIndex = (charIndex + shift) % 26;
+                return alphabet[shiftedIndex].toLowerCase();
+            } else {
+                return char;
+            }
+        })
+        .join('');
 
   return; //return decodedArr
 }
