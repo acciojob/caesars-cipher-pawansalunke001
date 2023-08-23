@@ -32,29 +32,10 @@ const lookup = {
 };
 
 function rot13(encodedStr) {
-  let decodedArr = []; // Your Result goes here
-  // Only change code below this line
-	const alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    const shift = 13;
+    const decodedArr = encodedStr.split('').map(char => lookup[char] || char);
+  return decodedArr.join('');
 
-    return encodedString
-        .split('')
-        .map(char => {
-            if (/[A-Z]/.test(char)) {
-                const charIndex = alphabet.indexOf(char);
-                const shiftedIndex = (charIndex + shift) % 26;
-                return alphabet[shiftedIndex];
-            } else if (/[a-z]/.test(char)) {
-                const charIndex = alphabet.indexOf(char.toUpperCase());
-                const shiftedIndex = (charIndex + shift) % 26;
-                return alphabet[shiftedIndex].toLowerCase();
-            } else {
-                return char;
-            }
-        })
-        .join('');
-
-  return; //return decodedArr
+  
 }
 
 // You can test your code by running the above function and printing it to console by pressing the run button at the top. To run it with input 36, uncomment the following line
